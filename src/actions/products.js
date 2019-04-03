@@ -1,66 +1,29 @@
 import axios from "axios";
 
 // Action types for the redux store management.
-const REQUEST_SUCCESS = "REQUEST_SUCCESS";
-const REQUEST_ERROR = "REQUEST_ERROR";
-const REQUEST_LOADING = "REQUEST_LOADING";
+const GET_PRODUCTS = "GET_PRODUCTS";
+const GET_PRODUCT = "GET_PRODUCT";
+const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+const DELETE_PRODUCT = "DELETE_PRODUCT";
+const CREATE_PRODUCT = "CREATE_PRODUCT";
 
 // Endpoints related to the Products management.
 const product_endpoint = "http://localhost:8000/api/products/";
 
-// Request methods to create server requests.
-const HTTP_POST = "post";
-const HTTP_GET = "get";
-const HTTP_DELETE = "delete";
-const HTTP_PUT = "put";
-
-/** Function: productRequests
+/** Function: getProducts
  *  Arguments:
- *      - request_data: the data to be sent with the request.
- *      - request_url: The url to send the request to.
- *      - request_method: The method to use to send the request.
+ *      - request_data: The data required to fetch all products.
  *  Defenition:
- *      Sends a request to the backend to perform actions on
- *      products data.
+ *      Calls the productRequests function above with the get method
+ *      and the session url preset.
  *  Returns: None
  **/
-const productRequests = (
-    request_data,
-    request_url,
-    request_method
-) => dispatch => {
-    let settings = {};
-
-    // Settings the axios request settings.
-    settings.data = request_data;
-    settings.url = request_url;
-    settings.method = request_method;
-
-    // Request to the backend.
-    axios(settings).then(
-        res => dispatch({ type: REQUEST_SUCCESS, payload: res.data }),
-        err => dispatch({ type: REQUEST_ERROR, payload: err.response.data })
-    );
+const getProducts = () => async dispatch => {
+    const res = await axios.get(product_endpoint);
+    dispatch({ type: GET_PRODUCTS, payload: res });
 };
 
-/** Specialized Function: deleteProduct
- *  Arguments:
- *      - request_data: The data to delete a product.
- *  Defenition:
- *      Calls the productRequests function above with the delete
- *      method and the session url preset.
- *  Returns: None
- **/
-const deleteProduct = request_data => dispatch =>
-    dispatch(
-        productRequests(
-            request_data,
-            `${product_endpoint}${request_data.id}/`,
-            HTTP_DELETE
-        )
-    );
-
-/** Specialized Function: getProducts
+/** Function: getProducts
  *  Arguments:
  *      - request_data: The data required to fetch all products.
  *  Defenition:
@@ -68,26 +31,12 @@ const deleteProduct = request_data => dispatch =>
  *      and the session url preset.
  *  Returns: None
  **/
-const getProducts = request_data => dispatch =>
-    dispatch(productRequests(request_data, product_endpoint, HTTP_GET));
+const getOneProduct = request_data => async dispatch => {
+    let res = await axios.get(product_endpoint + request_data.id + "/");
+    dispatch({ type: GET_PRODUCT, payload: res });
+};
 
-/** Specialized Function: getProducts
- *  Arguments:
- *      - request_data: The data required to fetch all products.
- *  Defenition:
- *      Calls the productRequests function above with the get method
- *      and the session url preset.
- *  Returns: None
- **/
-const getOneProduct = request_data => dispatch =>
-    dispatch(
-        productRequests(
-            request_data,
-            `${product_endpoint}${request_data.id}/`,
-            HTTP_GET
-        )
-    );
-/** Specialized Function: createProduct
+/** Function: createProduct
  *  Arguments:
  *      - request_data: The data to create a product.
  *  Defenition:
@@ -95,8 +44,10 @@ const getOneProduct = request_data => dispatch =>
  *      and the register url preset.
  *  Returns: None
  **/
-const createProduct = request_data => dispatch =>
-    dispatch(productRequests(request_data, product_endpoint, HTTP_POST));
+const createProduct = request_data => async dispatch => {
+    let res = await axios.post(product_endpoint);
+    dispatch({ type: CREATE_PRODUCT, payload: res });
+};
 
 /** Specialized Function: updateProduct
  *  Arguments:
@@ -106,20 +57,31 @@ const createProduct = request_data => dispatch =>
  *      and the profile url preset to update the profile.
  *  Returns: None
  **/
-const updateProduct = request_data => dispatch =>
-    dispatch(
-        productRequests(
-            request_data,
-            `${product_endpoint}${request_data.id}/`,
-            HTTP_PUT
-        )
-    );
+const updateProduct = request_data => async dispatch => {
+    let res = await axios.put(product_endpoint);
+    dispatch({ type: UPDATE_PRODUCT, payload: res });
+};
+
+/** Function: deleteProduct
+ *  Arguments:
+ *      - request_data: The data to delete a product.
+ *  Defenition:
+ *      Calls the productRequests function above with the delete
+ *      method and the session url preset.
+ *  Returns: None
+ **/
+const deleteProduct = request_data => async dispatch => {
+    let res = await axios.delete(product_endpoint + request_data.id + "/");
+    dispatch({ type: DELETE_PRODUCT, payload: res });
+};
 
 // Exporting the specialized functions and some action types.
 export {
-    REQUEST_ERROR,
-    REQUEST_SUCCESS,
-    REQUEST_LOADING,
+    GET_PRODUCT,
+    GET_PRODUCTS,
+    CREATE_PRODUCT,
+    UPDATE_PRODUCT,
+    DELETE_PRODUCT,
     updateProduct,
     createProduct,
     getProducts,
