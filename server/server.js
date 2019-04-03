@@ -1,9 +1,11 @@
+import "@babel/polyfill";
 import express from "express";
 import cors from "cors";
 import { json, urlencoded } from "body-parser";
 import morgan from "morgan";
 import product_router from "./resources/product/product.router";
 import { renderer } from "./helpers/renderer";
+import createStore from "./helpers/createStore";
 
 const app = express();
 
@@ -18,7 +20,8 @@ app.use("/api/products", product_router);
 
 // Server side rendering.
 app.get("*", (req, res) => {
-    res.send(renderer(req));
+    const store = createStore();
+    res.send(renderer(req, store));
 });
 
 const start = () => {
