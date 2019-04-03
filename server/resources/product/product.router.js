@@ -6,8 +6,7 @@ const router = Router();
 router
     .route("/")
     .get((req, res) => {
-        console.log("controller reached.");
-        res.status(200).send({ data: products.groups });
+        res.status(200).send(products.groups);
     })
     .post((req, res) => {
         res.status(200).send({ hello: "data" });
