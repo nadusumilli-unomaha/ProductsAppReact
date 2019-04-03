@@ -9,10 +9,11 @@ const SRC_DIR = path.resolve("./src");
 let config = ({ mode, presets } = { mode: "server", presets: "babel" }) =>
     webpackMerge(
         {
-            entry: path.join(SRC_DIR, "client/components/Home"),
+            mode: "development",
+            entry: path.join(SRC_DIR, "index"),
             output: {
                 filename: "bundle.js",
-                path: path.resolve(__dirname, "dist")
+                path: path.resolve(__dirname, "public")
             }
         },
         loadConfig({ mode, presets }),
