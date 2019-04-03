@@ -1,5 +1,10 @@
 import React from "react";
+import ProductList from "../containers/ProductList";
 
-const Home = () => <div>Im the Best home component.</div>;
+const Home = props => (
+    <div>
+        <ProductList />
+    </div>
+);
 
 export default Home;
