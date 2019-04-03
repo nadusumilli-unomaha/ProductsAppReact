@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import { json, urlencoded } from "body-parser";
 import morgan from "morgan";
+import { matchRoutes } from "react-router-config";
+import Routes from "../src/Routes";
 import product_router from "./resources/product/product.router";
 import { renderer } from "./helpers/renderer";
 import createStore from "./helpers/createStore";
@@ -21,7 +23,14 @@ app.use("/api/products", product_router);
 // Server side rendering.
 app.get("*", (req, res) => {
     const store = createStore();
-    res.send(renderer(req, store));
+
+    const promises = matchRoutes(Routes, req.path).map(({ route }) => {
+        return route.loadData ? route.loadData(store) : null;
+    });
+
+    Promise.all(promises).then(() => {
+        res.send(renderer(req, store));
+    });
 });
 
 const start = () => {
