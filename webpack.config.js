@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const webpackMerge = require("webpack-merge");
+const cssPlugin = require("mini-css-extract-plugin");
 const loadConfig = env => require(`./build_utils/webpack.${env.mode}`)(env);
 const loadPresets = env => require("./build_utils/loadPresets")(env);
 
@@ -14,7 +15,16 @@ let config = ({ mode, presets } = { mode: "server", presets: "babel" }) =>
             output: {
                 filename: "bundle.js",
                 path: path.resolve(__dirname, "public")
-            }
+            },
+            module: {
+                rules: [
+                    {
+                        test: /\.(css|scss)$/,
+                        use: [cssPlugin.loader, "css-loader", "sass-loader"]
+                    }
+                ]
+            },
+            plugins: [new cssPlugin()]
         },
         loadConfig({ mode, presets }),
         loadPresets({ mode, presets })
