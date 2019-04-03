@@ -5,7 +5,7 @@ class Product extends Component {
     render() {
         let { product } = this.props;
         return (
-            <div>
+            <div className="product-item">
                 <div>
                     <img
                         src={product.hero.href}

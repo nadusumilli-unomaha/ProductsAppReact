@@ -1,5 +1,4 @@
 import React from "react";
-import Home from "./components/Home";
 import ProductList from "./containers/ProductList";
 import { loadData } from "./components/ProductList";
 import Layout from "./pages/Layout";
