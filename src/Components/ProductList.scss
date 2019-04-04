@@ -1,0 +1,11 @@
+.main {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: start;
+}
