@@ -8,6 +8,7 @@ import Routes from "../src/Routes";
 import product_router from "./resources/product/product.router";
 import { renderer } from "./helpers/renderer";
 import createStore from "./helpers/createStore";
+import path from "path";
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(cors());
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
-app.use(express.static("public"));
+app.use(express.static(path.resolve("./public")));
 
 app.use("/api/products", product_router);
 
