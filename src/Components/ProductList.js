@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Loading from "../pages/Loading";
 import Product from "./Product";
 import { getProducts } from "../actions/products";
+import "./ProductList.scss";
 
 class ProductList extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class ProductList extends Component {
     render() {
         let { loading } = this.state;
         if (loading) return <Loading />;
-        return <div className="product-list">{this.renderProducts()}</div>;
+        return <div className="product-list row">{this.renderProducts()}</div>;
     }
 }
 
