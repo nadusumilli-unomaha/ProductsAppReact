@@ -42,7 +42,7 @@ class ProductList extends Component {
 
 ProductList.propTypes = {
     getProducts: PropTypes.func.isRequired,
-    products: PropTypes.object.isRequired
+    products: PropTypes.object
 };
 
 const loadData = store => {

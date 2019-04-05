@@ -1,6 +1,6 @@
+import "@babel/polyfill";
 import * as product_actions from "./products";
 import moxios from "moxios";
-import "@babel/polyfill";
 
 describe("Product Actions", () => {
     beforeEach(() => {
