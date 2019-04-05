@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { shallow } from "enzyme";
 import Product from "./Product";
 
 let product = {
@@ -71,8 +71,7 @@ let product = {
 
 describe("Product component", () => {
     it("renders without crashing", () => {
-        const div = document.createElement("div");
-        ReactDOM.render(<Product product={product} />, div);
-        ReactDOM.unmountComponentAtNode(div);
+        const wrapper = shallow(<Product product={product} />);
+        expect(wrapper).toBeTruthy();
     });
 });

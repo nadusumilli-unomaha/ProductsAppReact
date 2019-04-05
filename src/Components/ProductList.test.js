@@ -1,11 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { shallow } from "enzyme";
 import ProductList from "./ProductList";
+import * as product_actions from "../actions/products";
+import "@babel/polyfill";
 
 describe("Product List component", () => {
     it("renders without crashing", () => {
-        const div = document.createElement("div");
-        ReactDOM.render(<ProductList />, div);
-        ReactDOM.unmountComponentAtNode(div);
+        const wrapper = shallow(
+            <ProductList getProducts={product_actions.getProducts} />
+        );
+        expect(wrapper).toBeTruthy();
     });
 });
