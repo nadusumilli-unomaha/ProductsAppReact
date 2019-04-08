@@ -1,33 +1,46 @@
 import React from "react";
-import { shallow } from "enzyme";
 import Carousel from "./Carousel";
+import { setup, findByTestAttr } from "../test/testUtils";
+import data from "../../server/resources/product/products.json";
 
-let images = [
-    {
-        size: "m",
-        meta: "",
-        alt: "",
-        rel: "althero",
-        width: 363,
-        href:
-            "https://www.westelm.com/weimgs/ab/images/wcm/products/201912/0009/wavy-jacquard-duvet-cover-shams-1-m.jpg",
-        height: 363
-    },
-    {
-        size: "m",
-        meta: "",
-        alt: "",
-        rel: "althero",
-        width: 363,
-        href:
-            "https://www.westelm.com/weimgs/ab/images/wcm/products/201911/0001/wavy-jacquard-duvet-cover-shams-m.jpg",
-        height: 363
-    }
-];
+const images = data.groups[0].images;
 
 describe("Carousel component", () => {
+    let wrapper;
+    let toggleCarouselDisplay;
+
+    beforeEach(() => {
+        toggleCarouselDisplay = jest.fn();
+        wrapper = setup(Carousel, { images, toggleCarouselDisplay }, {});
+    });
+
     test("Must render to the screen.", () => {
-        const component = shallow(<Carousel images={images} />);
-        expect(component).toBeTruthy();
+        const carousel_component = findByTestAttr(
+            wrapper,
+            "component-carousel"
+        );
+        expect(carousel_component).toHaveLength(1);
+    });
+
+    test("on click close hide carousel component.", () => {
+        const instance = wrapper.instance();
+        const spy = jest.spyOn(instance, "closeCarousel");
+        const closeBtn = findByTestAttr(wrapper, "carousel-close-btn");
+        closeBtn.simulate("click");
+        wrapper.update();
+        expect(spy).toHaveBeenCalledTimes(0);
+    });
+
+    test("renders the correct image to the screen", () => {
+        const carousel_image = findByTestAttr(wrapper, "carousel-image");
+        expect(carousel_image).toHaveLength(1);
+        expect(carousel_image.find("img").getElement().props.src).toBe(
+            images[0].href
+        );
+    });
+
+    test("renders the correct image to the screen", () => {
+        const carousel_image = findByTestAttr(wrapper, "small-images");
+        expect(carousel_image.children()).toHaveLength(images.length);
     });
 });

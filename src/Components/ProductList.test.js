@@ -1,14 +1,33 @@
 import "@babel/polyfill";
 import React from "react";
-import { shallow } from "enzyme";
 import ProductList from "./ProductList";
-import * as product_actions from "../actions/products";
+import { getProducts } from "../actions/products";
+import { findByTestAttr, setup } from "../test/testUtils";
+import data from "../../server/resources/product/products.json";
+
+let products = { data: data.groups };
 
 describe("Product List component", () => {
-    it("renders without crashing", () => {
-        const wrapper = shallow(
-            <ProductList getProducts={product_actions.getProducts} />
+    test("renders without crashing", () => {
+        let wrapper = setup(ProductList, { products, getProducts }, {});
+        const product_list_component = findByTestAttr(
+            wrapper,
+            "product-list-component"
         );
-        expect(wrapper).toBeTruthy();
+        expect(product_list_component).toHaveLength(1);
+    });
+
+    test("renders loading screen if data isnt loaded yet", () => {
+        let wrapper = setup(ProductList, { getProducts }, {});
+        const loading_component = findByTestAttr(wrapper, "component-loading");
+        expect(loading_component).toHaveLength(1);
+    });
+
+    test("the loading variable in state changes.", () => {
+        let wrapper = setup(ProductList, { products, getProducts }, {});
+        expect(wrapper.state("loading")).toBe(false);
+        wrapper.setState({ loading: true });
+        wrapper.update();
+        expect(wrapper.state("loading")).toBeTruthy();
     });
 });

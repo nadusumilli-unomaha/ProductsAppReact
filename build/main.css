@@ -279,14 +279,21 @@
   height: auto; }
 
 .arrow {
-  border: solid black;
+  border: solid rgba(0, 0, 0, 0.2);
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 10px;
   cursor: pointer; }
 
+.arrow-div {
+  cursor: pointer; }
+
+.arrow-div:hover .arrow {
+  border-color: rgba(0, 0, 0, 0.5); }
+
 .right {
   margin-top: 70px;
+  margin-left: -10px;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg); }
 
