@@ -1,21 +1,21 @@
-import React from "react";
-import Loading from "./Loading";
-import { setup, findByTestAttr } from "../test/testUtils";
+import React from 'react'
+import Loading from './Loading'
+import { setup, findByTestAttr } from '../test/testUtils'
 
-describe("Loading component", () => {
-    let wrapper;
+describe('Loading component', () => {
+    let wrapper
 
     beforeEach(() => {
-        wrapper = setup(Loading);
-    });
+        wrapper = setup(Loading)
+    })
 
-    test("Must render to the screen.", () => {
-        const loading_component = findByTestAttr(wrapper, "component-loading");
-        expect(loading_component).toHaveLength(1);
-    });
+    test('Must render to the screen.', () => {
+        const loadingComponent = findByTestAttr(wrapper, 'component-loading')
+        expect(loadingComponent).toHaveLength(1)
+    })
 
-    test("Must render all the circle sub divs", () => {
-        const circle = findByTestAttr(wrapper, "circle");
-        expect(circle).toHaveLength(12);
-    });
-});
+    test('Must render all the circle sub divs', () => {
+        const circle = findByTestAttr(wrapper, 'circle')
+        expect(circle).toHaveLength(12)
+    })
+})

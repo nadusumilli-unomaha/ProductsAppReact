@@ -1,5 +1,5 @@
-import React from "react";
-import "./Loading.scss";
+import React from 'react'
+import './Loading.scss'
 
 /**
  * Functional react component that creates a
@@ -23,6 +23,6 @@ const Loading = () => (
         <div data-test="circle" className="sk-circle11 sk-circle" />
         <div data-test="circle" className="sk-circle12 sk-circle" />
     </div>
-);
+)
 
-export default Loading;
+export default Loading

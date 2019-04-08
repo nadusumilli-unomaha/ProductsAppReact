@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Loading from "../pages/Loading";
-import Product from "./Product";
-import { getProducts } from "../actions/products";
-import "./ProductList.scss";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Loading from '../pages/Loading'
+import Product from './Product'
+import { getProducts } from '../actions/products'
+import './ProductList.scss'
 
 /**
  * ProductList class that renders all the products.
@@ -18,10 +18,10 @@ class ProductList extends Component {
      * @returns {None}
      */
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             loading: this.props.products ? false : true
-        };
+        }
     }
 
     /**
@@ -32,8 +32,8 @@ class ProductList extends Component {
      * @returns {None}
      */
     componentDidMount() {
-        let { getProducts } = this.props;
-        getProducts();
+        let { getProducts } = this.props
+        getProducts()
     }
 
     /**
@@ -48,7 +48,7 @@ class ProductList extends Component {
             prevProps.products !== this.props.products &&
             this.props.products.data
         ) {
-            this.setState({ loading: false });
+            this.setState({ loading: false })
         }
     }
 
@@ -61,17 +61,17 @@ class ProductList extends Component {
     renderProducts() {
         return this.props.products.data.map(product => (
             <Product key={product.id} product={product} />
-        ));
+        ))
     }
 
     render() {
-        let { loading } = this.state;
+        let { loading } = this.state
         if (loading)
             return (
                 <div data-test="component-loading">
                     <Loading />
                 </div>
-            );
+            )
         return (
             <div
                 data-test="product-list-component"
@@ -79,7 +79,7 @@ class ProductList extends Component {
             >
                 {this.renderProducts()}
             </div>
-        );
+        )
     }
 }
 
@@ -87,7 +87,7 @@ class ProductList extends Component {
 ProductList.propTypes = {
     getProducts: PropTypes.func.isRequired,
     products: PropTypes.object
-};
+}
 
 /**
  * load data dispatches state to the store.
@@ -96,8 +96,8 @@ ProductList.propTypes = {
  * @returns {Redux.store} state of the app.
  */
 const loadData = store => {
-    return store.dispatch(getProducts());
-};
+    return store.dispatch(getProducts())
+}
 
-export { loadData };
-export default ProductList;
+export { loadData }
+export default ProductList

@@ -1,46 +1,43 @@
-import React from "react";
-import Carousel from "./Carousel";
-import { setup, findByTestAttr } from "../test/testUtils";
-import data from "../../server/resources/product/products.json";
+import React from 'react'
+import Carousel from './Carousel'
+import { setup, findByTestAttr } from '../test/testUtils'
+import data from '../../server/resources/product/products.json'
 
-const images = data.groups[0].images;
+const images = data.groups[0].images
 
-describe("Carousel component", () => {
-    let wrapper;
-    let toggleCarouselDisplay;
+describe('Carousel component', () => {
+    let wrapper
+    let toggleCarouselDisplay
 
     beforeEach(() => {
-        toggleCarouselDisplay = jest.fn();
-        wrapper = setup(Carousel, { images, toggleCarouselDisplay }, {});
-    });
+        toggleCarouselDisplay = jest.fn()
+        wrapper = setup(Carousel, { images, toggleCarouselDisplay }, {})
+    })
 
-    test("Must render to the screen.", () => {
-        const carousel_component = findByTestAttr(
-            wrapper,
-            "component-carousel"
-        );
-        expect(carousel_component).toHaveLength(1);
-    });
+    test('Must render to the screen.', () => {
+        const carouselComponent = findByTestAttr(wrapper, 'component-carousel')
+        expect(carouselComponent).toHaveLength(1)
+    })
 
-    test("on click close hide carousel component.", () => {
-        const instance = wrapper.instance();
-        const spy = jest.spyOn(instance, "closeCarousel");
-        const closeBtn = findByTestAttr(wrapper, "carousel-close-btn");
-        closeBtn.simulate("click");
-        wrapper.update();
-        expect(spy).toHaveBeenCalledTimes(0);
-    });
+    test('on click close hide carousel component.', () => {
+        const instance = wrapper.instance()
+        const spy = jest.spyOn(instance, 'closeCarousel')
+        const closeBtn = findByTestAttr(wrapper, 'carousel-close-btn')
+        closeBtn.simulate('click')
+        wrapper.update()
+        expect(spy).toHaveBeenCalledTimes(0)
+    })
 
-    test("renders the correct image to the screen", () => {
-        const carousel_image = findByTestAttr(wrapper, "carousel-image");
-        expect(carousel_image).toHaveLength(1);
-        expect(carousel_image.find("img").getElement().props.src).toBe(
+    test('renders the correct image to the screen', () => {
+        const carouselImage = findByTestAttr(wrapper, 'carousel-image')
+        expect(carouselImage).toHaveLength(1)
+        expect(carouselImage.find('img').getElement().props.src).toBe(
             images[0].href
-        );
-    });
+        )
+    })
 
-    test("renders the correct image to the screen", () => {
-        const carousel_image = findByTestAttr(wrapper, "small-images");
-        expect(carousel_image.children()).toHaveLength(images.length);
-    });
-});
+    test('renders the correct images to scrollable content', () => {
+        const carouselImage = findByTestAttr(wrapper, 'small-images')
+        expect(carouselImage.children()).toHaveLength(images.length)
+    })
+})

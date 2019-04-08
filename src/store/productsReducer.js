@@ -1,10 +1,10 @@
-import * as product_actions from "../actions/products";
+import * as productActions from '../actions/products'
 
 // Provides the initial state for the products model
-const initial_state = {
+const initialState = {
     data: [],
     errors: []
-};
+}
 
 /**
  * Redux Reducer to maintain the state of the products.
@@ -13,19 +13,19 @@ const initial_state = {
  * @params {Object} action - action to be reduced.
  * @returns {Object} - new State
  */
-const products = (state = initial_state, action = {}) => {
+const products = (state = initialState, action = {}) => {
     switch (action.type) {
-        case product_actions.GET_PRODUCTS:
+        case productActions.GET_PRODUCTS:
             return {
                 ...state,
                 data: action.payload.data,
                 errors: []
-            };
+            }
         default:
             return {
                 ...state
-            };
+            }
     }
-};
+}
 
-export default products;
+export default products

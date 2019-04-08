@@ -1,7 +1,7 @@
-import React from "react";
-import { renderRoutes } from "react-router-config";
-import PropTypes from "prop-types";
-import "./Layout.scss";
+import React from 'react'
+import { renderRoutes } from 'react-router-config'
+import PropTypes from 'prop-types'
+import './Layout.scss'
 
 /**
  * Functional React Component that renders a layout to screen.
@@ -18,10 +18,10 @@ const Layout = ({ route }) => (
         <main data-test="main">{renderRoutes(route.routes)}</main>
         <footer data-test="footer" />
     </div>
-);
+)
 
 Layout.propTypes = {
     route: PropTypes.object.isRequired
-};
+}
 
-export default Layout;
+export default Layout

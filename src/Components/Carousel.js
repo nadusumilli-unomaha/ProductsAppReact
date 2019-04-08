@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./Carousel.scss";
+import React, { Component } from 'react'
+import './Carousel.scss'
 
 /**
  * Carousel class that display a carousel
@@ -15,10 +15,10 @@ class Carousel extends Component {
      * @returns {none}
      */
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             selectedImage: this.props.images[0]
-        };
+        }
     }
 
     /**
@@ -30,9 +30,9 @@ class Carousel extends Component {
      */
     changeSelectedImage = image => e => {
         this.setState((prevState, props) => {
-            return { selectedImage: image };
-        });
-    };
+            return { selectedImage: image }
+        })
+    }
 
     /**
      * Renders all the images in the list passed from product
@@ -41,7 +41,7 @@ class Carousel extends Component {
      * @returns {JSX.Element} jsx to render to screen.
      */
     renderImages() {
-        let { images, name } = this.props;
+        let { images, name } = this.props
         return images.map((image, idx) => (
             <img
                 key={idx}
@@ -50,7 +50,7 @@ class Carousel extends Component {
                 src={image.href}
                 alt={name}
             />
-        ));
+        ))
     }
 
     /**
@@ -60,9 +60,9 @@ class Carousel extends Component {
      * @returns {None}
      */
     scrollLeft = () => {
-        let $scrollDiv = document.getElementById("scrollCarousel");
-        $scrollDiv.scrollBy(-200, 0);
-    };
+        let $scrollDiv = document.getElementById('scrollCarousel')
+        $scrollDiv.scrollBy(-200, 0)
+    }
 
     /**
      * Scroll the images in the carousel to the right.
@@ -71,9 +71,9 @@ class Carousel extends Component {
      * @returns {None}
      */
     scrollRight = () => {
-        let $scrollDiv = document.getElementById("scrollCarousel");
-        $scrollDiv.scrollBy(200, 0);
-    };
+        let $scrollDiv = document.getElementById('scrollCarousel')
+        $scrollDiv.scrollBy(200, 0)
+    }
 
     /**
      * Close the carousel on click close btn.
@@ -82,12 +82,12 @@ class Carousel extends Component {
      * @returns {None}
      */
     closeCarousel = () => {
-        this.props.toggleCarouselDisplay();
-    };
+        this.props.toggleCarouselDisplay()
+    }
 
     render() {
-        let { selectedImage } = this.state;
-        let { name } = this.props;
+        let { selectedImage } = this.state
+        let { name } = this.props
         return (
             <div data-test="component-carousel" className="carousel">
                 <div className="carousel-content">
@@ -133,8 +133,8 @@ class Carousel extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default Carousel;
+export default Carousel

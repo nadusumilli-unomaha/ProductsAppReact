@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./Product.scss";
-import Carousel from "./Carousel";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import './Product.scss'
+import Carousel from './Carousel'
 
 /**
  * Product class that display a single product to the screen.
@@ -17,11 +17,11 @@ class Product extends Component {
      * @returns {none}
      */
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             image: props.product.hero,
             displayCarousel: false
-        };
+        }
     }
 
     /**
@@ -37,7 +37,7 @@ class Product extends Component {
                 {price.low} - <span className="currency-symbol">$</span>
                 {price.high}
             </>
-        );
+        )
     }
 
     /**
@@ -51,10 +51,10 @@ class Product extends Component {
         if (this.props.product.images[1])
             this.setState(prevState => {
                 if (prevState.image !== this.props.product.images[1])
-                    return { image: this.props.product.images[1] };
-                else return { image: this.props.product.hero };
-            });
-    };
+                    return { image: this.props.product.images[1] }
+                else return { image: this.props.product.hero }
+            })
+    }
 
     /**
      * Changes the state of toggleCarouselDisplay param
@@ -65,13 +65,13 @@ class Product extends Component {
      */
     toggleCarouselDisplay = () => {
         this.setState(prevState => {
-            return { displayCarousel: !prevState.displayCarousel };
-        });
-    };
+            return { displayCarousel: !prevState.displayCarousel }
+        })
+    }
 
     render() {
-        let { product } = this.props;
-        let { image } = this.state;
+        let { product } = this.props
+        let { image } = this.state
         return (
             <div data-test="component-product" className="product column">
                 <div
@@ -103,7 +103,7 @@ class Product extends Component {
                         data-test="product-regular-price"
                         className="product-regular-price"
                     >
-                        Sugg. Price:{" "}
+                        Sugg. Price:{' '}
                         {this.renderPrice(product.priceRange.regular)}
                     </span>
                 )}
@@ -112,10 +112,10 @@ class Product extends Component {
                     <span
                         data-test="product-selling-price"
                         className={`product-selling-price ${
-                            product.priceRange.regular ? "discounted" : ""
+                            product.priceRange.regular ? 'discounted' : ''
                         }`}
                     >
-                        Our Price:{" "}
+                        Our Price:{' '}
                         {this.renderPrice(product.priceRange.selling)}
                     </span>
                 )}
@@ -130,13 +130,13 @@ class Product extends Component {
                     </div>
                 )}
             </div>
-        );
+        )
     }
 }
 
 // Required props for the Product Component.
 Product.propTypes = {
     product: PropTypes.object.isRequired
-};
+}
 
-export default Product;
+export default Product
