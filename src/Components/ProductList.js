@@ -75,8 +75,7 @@ class ProductList extends Component {
         return (
             <div
                 data-test="product-list-component"
-                className="product-list row"
-            >
+                className="product-list row">
                 {this.renderProducts()}
             </div>
         )

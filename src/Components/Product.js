@@ -78,8 +78,7 @@ class Product extends Component {
                     data-test="product-image"
                     className="product-image"
                     onMouseEnter={this.changeImage}
-                    onMouseLeave={this.changeImage}
-                >
+                    onMouseLeave={this.changeImage}>
                     <img
                         src={image.href}
                         alt={product.name}
@@ -90,8 +89,7 @@ class Product extends Component {
                 <span
                     data-test="product-quicklook"
                     className="product-overlay"
-                    onClick={this.toggleCarouselDisplay}
-                >
+                    onClick={this.toggleCarouselDisplay}>
                     Quicklook
                 </span>
                 <span data-test="product-name" className="product-name">
@@ -101,8 +99,7 @@ class Product extends Component {
                 {product.priceRange.regular && (
                     <span
                         data-test="product-regular-price"
-                        className="product-regular-price"
-                    >
+                        className="product-regular-price">
                         Sugg. Price:{' '}
                         {this.renderPrice(product.priceRange.regular)}
                     </span>
@@ -113,8 +110,7 @@ class Product extends Component {
                         data-test="product-selling-price"
                         className={`product-selling-price ${
                             product.priceRange.regular ? 'discounted' : ''
-                        }`}
-                    >
+                        }`}>
                         Our Price:{' '}
                         {this.renderPrice(product.priceRange.selling)}
                     </span>

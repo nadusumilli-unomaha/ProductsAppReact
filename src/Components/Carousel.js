@@ -95,14 +95,12 @@ class Carousel extends Component {
                         <span
                             data-test="carousel-close-btn"
                             className="close"
-                            onClick={this.closeCarousel}
-                        >
+                            onClick={this.closeCarousel}>
                             &times;
                         </span>
                         <div
                             data-test="carousel-image"
-                            className="carousel-selectedImage-container"
-                        >
+                            className="carousel-selectedImage-container">
                             <img
                                 className="carousel-main-image"
                                 src={selectedImage.href}
@@ -112,21 +110,18 @@ class Carousel extends Component {
                         <div className="carousel-scrollable-container">
                             <div
                                 className="child arrow-div"
-                                onClick={this.scrollLeft}
-                            >
+                                onClick={this.scrollLeft}>
                                 <i className="arrow left" />
                             </div>
                             <div
                                 data-test="small-images"
                                 id="scrollCarousel"
-                                className="carousel-mini-images child"
-                            >
+                                className="carousel-mini-images child">
                                 {this.renderImages()}
                             </div>
                             <div
                                 className="child arrow-div"
-                                onClick={this.scrollRight}
-                            >
+                                onClick={this.scrollRight}>
                                 <i className="arrow right" />
                             </div>
                         </div>
