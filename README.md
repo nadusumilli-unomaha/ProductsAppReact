@@ -1,4 +1,4 @@
-# WSI Code Challenge
+# Product Display App
 
 ## Requirements
 
