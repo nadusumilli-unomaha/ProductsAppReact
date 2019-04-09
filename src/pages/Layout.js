@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { renderRoutes } from 'react-router-config'
 import PropTypes from 'prop-types'

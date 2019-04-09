@@ -1,16 +1,16 @@
-import "@babel/polyfill";
-import * as product_actions from "./products";
-import moxios from "moxios";
+import '@babel/polyfill'
+import * as productActions from './products'
+import moxios from 'moxios'
 
-describe("Product Actions", () => {
+describe('Product Actions', () => {
     beforeEach(() => {
-        moxios.install();
-    });
+        moxios.install()
+    })
     afterEach(() => {
-        moxios.uninstall();
-    });
+        moxios.uninstall()
+    })
     test("return an action with type 'GET_PRODUCTS'", () => {
-        const action = product_actions.getProducts();
-        expect(true).toEqual(true);
-    });
-});
+        const action = productActions.getProducts()
+        expect(true).toEqual(true)
+    })
+})

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import productsReducer from './productsReducer'
 import { GET_PRODUCTS } from '../actions/products'

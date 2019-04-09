@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import Loading from '../pages/Loading'
 import Product from './Product'
+import PropTypes from 'prop-types'
 import { getProducts } from '../actions/products'
 import './ProductList.scss'
 

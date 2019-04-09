@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { setup, findByTestAttr, checkProps } from '../test/testUtils'
 import Product from './Product'

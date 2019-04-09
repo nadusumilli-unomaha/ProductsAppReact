@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from 'axios'
 
 // Action types for the redux store management.
-const GET_PRODUCTS = "GET_PRODUCTS";
-const GET_PRODUCT = "GET_PRODUCT";
-const UPDATE_PRODUCT = "UPDATE_PRODUCT";
-const DELETE_PRODUCT = "DELETE_PRODUCT";
-const CREATE_PRODUCT = "CREATE_PRODUCT";
+const GET_PRODUCTS = 'GET_PRODUCTS'
+const GET_PRODUCT = 'GET_PRODUCT'
+const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
+const DELETE_PRODUCT = 'DELETE_PRODUCT'
+const CREATE_PRODUCT = 'CREATE_PRODUCT'
 
 // Endpoints related to the Products management.
-const product_endpoint = "http://localhost:8000/api/products/";
+const productEndpoint = 'http://localhost:8000/api/products/'
 
 /**
  * sends a request to the backend to fetch
@@ -18,9 +18,9 @@ const product_endpoint = "http://localhost:8000/api/products/";
  * @returns {None}
  */
 const getProducts = () => async dispatch => {
-    const res = await axios.get(product_endpoint);
-    dispatch({ type: GET_PRODUCTS, payload: res });
-};
+    const res = await axios.get(productEndpoint)
+    dispatch({ type: GET_PRODUCTS, payload: res })
+}
 
 /**
  * sends a request to the backend to fetch
@@ -29,10 +29,10 @@ const getProducts = () => async dispatch => {
  * @param {None}
  * @returns {None}
  */
-const getOneProduct = request_data => async dispatch => {
-    let res = await axios.get(product_endpoint + request_data.id + "/");
-    dispatch({ type: GET_PRODUCT, payload: res });
-};
+const getOneProduct = requestData => async dispatch => {
+    let res = await axios.get(productEndpoint + requestData.id + '/')
+    dispatch({ type: GET_PRODUCT, payload: res })
+}
 
 /**
  * sends a request to the backend to create
@@ -41,10 +41,10 @@ const getOneProduct = request_data => async dispatch => {
  * @param {None}
  * @returns {None}
  */
-const createProduct = request_data => async dispatch => {
-    let res = await axios.post(product_endpoint);
-    dispatch({ type: CREATE_PRODUCT, payload: res });
-};
+const createProduct = requestData => async dispatch => {
+    let res = await axios.post(productEndpoint)
+    dispatch({ type: CREATE_PRODUCT, payload: res })
+}
 
 /**
  * sends a request to the backend to update
@@ -53,10 +53,10 @@ const createProduct = request_data => async dispatch => {
  * @param {None}
  * @returns {None}
  */
-const updateProduct = request_data => async dispatch => {
-    let res = await axios.put(product_endpoint);
-    dispatch({ type: UPDATE_PRODUCT, payload: res });
-};
+const updateProduct = requestData => async dispatch => {
+    let res = await axios.put(productEndpoint)
+    dispatch({ type: UPDATE_PRODUCT, payload: res })
+}
 
 /**
  * sends a request to the backend to delete
@@ -65,10 +65,10 @@ const updateProduct = request_data => async dispatch => {
  * @param {None}
  * @returns {None}
  */
-const deleteProduct = request_data => async dispatch => {
-    let res = await axios.delete(product_endpoint + request_data.id + "/");
-    dispatch({ type: DELETE_PRODUCT, payload: res });
-};
+const deleteProduct = requestData => async dispatch => {
+    let res = await axios.delete(productEndpoint + requestData.id + '/')
+    dispatch({ type: DELETE_PRODUCT, payload: res })
+}
 
 // Exporting the specialized functions and some action types.
 export {
@@ -82,4 +82,4 @@ export {
     getProducts,
     deleteProduct,
     getOneProduct
-};
+}

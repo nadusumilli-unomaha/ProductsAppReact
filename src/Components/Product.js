@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import Carousel from './Carousel'
 import PropTypes from 'prop-types'
 import './Product.scss'
-import Carousel from './Carousel'
 
 /**
  * Product class that display a single product to the screen.

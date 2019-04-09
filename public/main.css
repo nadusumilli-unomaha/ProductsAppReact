@@ -137,66 +137,6 @@
   40% {
     opacity: 1; } }
 
-/* Adding padding BETWEEN each column */
-.column {
-  margin: 1em; }
-
-.product-overlay {
-  cursor: pointer;
-  text-decoration: underline;
-  display: block;
-  margin-left: 8px; }
-
-.product {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 10px;
-  text-overflow: wrap;
-  border: 1px solid transparent;
-  height: 500px;
-  width: 400px;
-  align-content: center; }
-
-.product-image {
-  height: auto;
-  width: 400px;
-  margin-left: 8px; }
-
-.product-name {
-  margin: 0.3em 0;
-  display: block;
-  margin-left: 8px; }
-
-.product-regular-price {
-  text-decoration: line-through;
-  display: block;
-  margin-left: 8px; }
-
-.product-selling-price {
-  display: block;
-  margin-left: 8px; }
-
-.discounted {
-  color: red; }
-
-.product:hover {
-  border: 1px solid #ced4da; }
-  .product:hover .btn {
-    background-color: blue; }
-
-@media only screen and (min-width: 1315px) {
-  .column {
-    margin-left: 3em; } }
-
-@media only screen and (max-width: 420px) {
-  .product {
-    width: 350px;
-    height: 435px; }
-    .product img {
-      width: 315px;
-      height: 315px; } }
-
 .carousel {
   position: fixed;
   z-index: 1;
@@ -332,6 +272,66 @@
       height: 300px; }
   .carousel-scrollable-container {
     width: 300px; } }
+
+/* Adding padding BETWEEN each column */
+.column {
+  margin: 1em; }
+
+.product-overlay {
+  cursor: pointer;
+  text-decoration: underline;
+  display: block;
+  margin-left: 8px; }
+
+.product {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  text-overflow: wrap;
+  border: 1px solid transparent;
+  height: 500px;
+  width: 400px;
+  align-content: center; }
+
+.product-image {
+  height: auto;
+  width: 400px;
+  margin-left: 8px; }
+
+.product-name {
+  margin: 0.3em 0;
+  display: block;
+  margin-left: 8px; }
+
+.product-regular-price {
+  text-decoration: line-through;
+  display: block;
+  margin-left: 8px; }
+
+.product-selling-price {
+  display: block;
+  margin-left: 8px; }
+
+.discounted {
+  color: red; }
+
+.product:hover {
+  border: 1px solid #ced4da; }
+  .product:hover .btn {
+    background-color: blue; }
+
+@media only screen and (min-width: 1315px) {
+  .column {
+    margin-left: 3em; } }
+
+@media only screen and (max-width: 420px) {
+  .product {
+    width: 350px;
+    height: 435px; }
+    .product img {
+      width: 315px;
+      height: 315px; } }
 
 .main {
   max-width: 1000px;
