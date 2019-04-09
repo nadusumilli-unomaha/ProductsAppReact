@@ -10,7 +10,8 @@ describe('Product Actions', () => {
         store = configureStore()
     })
 
-    test("return an action with type 'GET_PRODUCTS'", async () => {
+    test("'GET_PRODUCTS' returns the correct data to the store.", async () => {
+        expect(store.getState()).toEqual({ products: { data: [], errors: [] } })
         await store.dispatch(productActions.getProducts())
         let expectedState = {
             products: {
