@@ -1,7 +1,7 @@
-const Router = require('express').Router
-const products = require('./products.json')
+import express from 'express'
+import { products } from './products'
 
-const router = Router()
+const router = express.Router()
 
 router
     .route('/')
@@ -23,4 +23,4 @@ router
     .put()
     .delete()
 
-module.exports = router
+export default router

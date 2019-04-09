@@ -20,7 +20,7 @@ class ProductList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            loading: this.props.products ? false : true
+            loading: this.props.products.data ? false : true
         }
     }
 

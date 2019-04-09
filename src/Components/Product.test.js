@@ -1,7 +1,7 @@
 import React from 'react'
 import { setup, findByTestAttr, checkProps } from '../test/testUtils'
 import Product from './Product'
-import products from '../../server/resources/product/products.json'
+import { products } from '../../server/resources/product/products'
 
 let product = products.groups[0]
 

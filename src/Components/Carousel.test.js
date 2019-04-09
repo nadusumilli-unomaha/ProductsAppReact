@@ -1,9 +1,9 @@
 import React from 'react'
 import Carousel from './Carousel'
 import { setup, findByTestAttr } from '../test/testUtils'
-import data from '../../server/resources/product/products.json'
+import { products } from '../../server/resources/product/products'
 
-const images = data.groups[0].images
+const images = products.groups[0].images
 
 describe('Carousel component', () => {
     let wrapper
